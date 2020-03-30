@@ -2,16 +2,15 @@ package main
 
 import (
 	"errors"
-	"log"
 	"main/config"
 	"main/router"
 	"net/http"
 	"time"
 
-	"github.com/spf13/viper"
-
 	"github.com/gin-gonic/gin"
+	"github.com/lexkong/log"
 	"github.com/spf13/pflag"
+	"github.com/spf13/viper"
 )
 
 var (
@@ -28,6 +27,12 @@ func main() {
 	// Set gin mode
 	gin.SetMode(viper.GetString("runmode"))
 
+	// 测试 log
+	//for {
+	//	log.Info("111111111111111111111111111111111111111111")
+	//	time.Sleep(100 * time.Millisecond)
+	//}
+
 	// 创建 gin 引擎
 	g := gin.New()
 
@@ -43,11 +48,11 @@ func main() {
 		if err := pingServer(); err != nil {
 			log.Fatal("The router has no response, or it might took too long to start up.", err)
 		}
-		log.Print("The router has been deployed successfully.")
+		log.Info("The router has been deployed successfully.")
 	}()
 
-	log.Printf("Start to listening the incoming requests on http address: %s", viper.GetString("url"))
-	log.Print(http.ListenAndServe(viper.GetString("addr"), g).Error())
+	log.Infof("Start to listening the incoming requests on http address: %s", viper.GetString("url"))
+	log.Info(http.ListenAndServe(viper.GetString("addr"), g).Error())
 }
 
 // pingServer func
@@ -58,7 +63,7 @@ func pingServer() error {
 			return nil
 		}
 		// 停 1s 再 ping
-		log.Print("Waiting for the router, retry in 1 second.")
+		log.Info("Waiting for the router, retry in 1 second.")
 		time.Sleep(time.Second)
 	}
 	return errors.New("Cannot connect to the router.")
