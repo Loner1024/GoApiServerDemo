@@ -15,5 +15,8 @@ require (
 	github.com/shirou/gopsutil v2.20.2+incompatible
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.6.2
+	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf
+	golang.org/x/crypto v0.0.0-20191205180655-e7c4368fe9dd
 	golang.org/x/sys v0.0.0-20200327173247-9dae0f8f5775 // indirect
+	gopkg.in/go-playground/validator.v9 v9.31.0
 )
