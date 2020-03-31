@@ -12,3 +12,7 @@ log:
   log_rotate_date: 1
   log_rotate_size: 1
   log_backup_count: 7
+db:
+  name: sqlite3
+docker_db:
+  username: docker_db

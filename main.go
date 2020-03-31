@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"main/config"
+	"main/model"
 	"main/router"
 	"net/http"
 	"time"
@@ -42,6 +43,10 @@ func main() {
 
 	// 加载路由
 	router.Load(g, middlewares...)
+
+	// init db
+	model.DB.Init()
+	defer model.DB.Close()
 
 	// Ping the server to make sure the router is working.
 	go func() {
