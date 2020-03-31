@@ -1,4 +1,5 @@
 main
 .idea
-.log
+*.log
 log/
+*.db

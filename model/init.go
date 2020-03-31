@@ -24,7 +24,7 @@ func (db *Database) Init() {
 }
 
 func openDB(name string) *gorm.DB {
-	db, err := gorm.Open("sqlite3", "/tmp/gorm.db")
+	db, err := gorm.Open("sqlite3", "./gorm.db")
 	if err != nil {
 		log.Errorf(err, "Database connection failed. Database name: %s", name)
 	}

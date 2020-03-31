@@ -2,6 +2,7 @@ package router
 
 import (
 	"main/handler/sd"
+	"main/handler/user"
 	"main/router/middleware"
 	"net/http"
 
@@ -20,6 +21,12 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	g.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
+
+	u := g.Group("/v1/user")
+	{
+		u.POST("", user.Create)
+
+	}
 
 	// Group 创建路由组，具有相同路径的前缀的路由，通用中间件
 	// 健康检查处理程序，检查 API Server 的状态：健康状况、服务器硬盘、CPU 和内存使用量
