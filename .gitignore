@@ -3,3 +3,4 @@ main
 *.log
 log/
 *.db
+.DS_Store
