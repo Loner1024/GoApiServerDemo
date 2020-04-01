@@ -29,7 +29,8 @@ func openDB(name string) *gorm.DB {
 		log.Errorf(err, "Database connection failed. Database name: %s", name)
 	}
 	log.Infof("Database connection successful. Database name:%s", name)
-	defer db.Close()
+	//defer db.Close()
+	db.AutoMigrate(&BaseModel{}, &UserModel{})
 	return db
 }
 

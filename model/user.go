@@ -16,9 +16,9 @@ type UserModel struct {
 	Password string `json:"password" gorm:"column:password;not null" binding:"required" validate:"min=5,max=128"`
 }
 
-func (c *UserModel) TableName() string {
-	return "tb_users"
-}
+//func (c *UserModel) TableName() string {
+//	return "tb_users"
+//}
 
 // Create creates a new user account.
 func (u *UserModel) Create() error {
