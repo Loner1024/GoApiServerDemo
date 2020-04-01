@@ -5,6 +5,7 @@ import (
 	"main/config"
 	"main/model"
 	"main/router"
+	"main/router/middleware"
 	"net/http"
 	"time"
 
@@ -39,10 +40,10 @@ func main() {
 
 	// 中间件：非具体业务类型的代码
 	// gin 中间件 HandleFunc 是用于自定义中间件的方法
-	middlewares := []gin.HandlerFunc{}
+	//middlewares := []gin.HandlerFunc{}
 
 	// 加载路由
-	router.Load(g, middlewares...)
+	router.Load(g, middleware.RequestId(), middleware.Logging())
 
 	// init db
 	model.DB.Init()

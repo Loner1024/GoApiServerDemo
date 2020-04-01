@@ -16,6 +16,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	// 在正式跨域之前，浏览器会根据需要发起一次预检（也就是option请求），用来让服务端返回允许的方法（如get、post），被跨域访问的Origin（来源或者域），还有是否需要Credentials(认证信息)等。
 	g.Use(middleware.Options) // 浏览器跨域 OPTIONS 请求设置
 	g.Use(middleware.Secure)  // 安全设置
+	g.Use(mw...)
 
 	// 404 NoRoute 默认返回 404
 	g.NoRoute(func(c *gin.Context) {
